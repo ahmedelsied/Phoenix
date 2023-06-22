@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Events\Registered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Resources\auth\LoggedInUserResource;
 use App\Repositories\Contracts\ICode;
 use App\Repositories\Contracts\IUser;
 use App\Traits\HttpResponse;
@@ -63,7 +64,8 @@ class RegisterController extends Controller
     {
         $data = array_merge($request->all(), ['password' => bcrypt($request->password)]);
         $user = $this->user->create($data);
+        $user->markEmailAsVerified();
         // event(new Registered($user, $from, $this->code));
-        return self::success('user Registered successfully, please verify your email address', 201);
+        return self::returnData('user', new LoggedInUserResource($user),'logged in successfully',200);
     }
 }
