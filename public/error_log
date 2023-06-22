@@ -1,0 +1,6 @@
+[21-Jun-2023 13:20:00 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home2/harajalkamel/public_html/vendor/nesbot/carbon/src/Carbon/Traits/Date.php on line 1253
+[21-Jun-2023 13:20:00 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home2/harajalkamel/public_html/vendor/nesbot/carbon/src/Carbon/Traits/Date.php on line 1262
+[21-Jun-2023 13:20:00 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home2/harajalkamel/public_html/vendor/nesbot/carbon/src/Carbon/Traits/Date.php on line 2485
+[21-Jun-2023 13:20:00 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home2/harajalkamel/public_html/vendor/nesbot/carbon/src/Carbon/Traits/Date.php on line 2610
+[21-Jun-2023 13:20:00 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home2/harajalkamel/public_html/vendor/nesbot/carbon/src/Carbon/Traits/Date.php on line 2622
+[21-Jun-2023 13:20:01 UTC] PHP Deprecated:  Using ${var} in strings is deprecated, use {$var} instead in /home2/harajalkamel/public_html/vendor/spatie/ignition/src/Solutions/SolutionProviders/MergeConflictSolutionProvider.php on line 51
