@@ -63,7 +63,7 @@ class RegisterController extends Controller
     {
         $data = array_merge($request->all(), ['password' => bcrypt($request->password)]);
         $user = $this->user->create($data);
-        event(new Registered($user, $from, $this->code));
+        // event(new Registered($user, $from, $this->code));
         return self::success('user Registered successfully, please verify your email address', 201);
     }
 }
