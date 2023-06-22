@@ -9,6 +9,7 @@ use App\Http\Resources\auth\LoggedInUserResource;
 use App\Repositories\Contracts\ICode;
 use App\Repositories\Contracts\IUser;
 use App\Traits\HttpResponse;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -65,6 +66,8 @@ class RegisterController extends Controller
         $data = array_merge($request->all(), ['password' => bcrypt($request->password)]);
         $user = $this->user->create($data);
         $user->markEmailAsVerified();
+        $token = Auth::guard('user')->attempt($request->all());
+        $user['token'] = $token;
         // event(new Registered($user, $from, $this->code));
         return self::returnData('user', new LoggedInUserResource($user),'logged in successfully',200);
     }
