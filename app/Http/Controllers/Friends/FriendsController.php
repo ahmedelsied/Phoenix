@@ -51,7 +51,7 @@ class FriendsController extends Controller
         $user = auth()->user();
         $receiver = $this->user->find($id);
 
-        if ($id == $user->id ||
+        if ($id == $user?->id ||
             $this->friendRequest->checkByTwoConditions('user_id', $user->id, 'receiver_id', $receiver->id)->exists() ||
             $this->friendRequestReceiver->checkByTwoConditions('user_id', $user->id, 'requester_id', $receiver->id)->exists()) {
             return self::failure("idiot", 422);
