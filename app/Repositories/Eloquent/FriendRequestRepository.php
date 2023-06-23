@@ -15,8 +15,8 @@ class FriendRequestRepository extends BaseRepository implements IFriendRequest
     public function isRequested($user): bool
     {
         $user1 = auth()->user();
-        foreach ($user1->friendRequests()->get() as $requester) {
-            if ($user?->id == $requester->receiver_id) {
+        foreach (($user1?->friendRequests()->get() ?? [])as $requester) {
+            if ($user?->id == $requester?->receiver_id) {
                 return true;
             }
         }
