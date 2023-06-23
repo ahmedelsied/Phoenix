@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Chats;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Chat\MessageResource;
 use App\Models\Message;
+use App\Models\User;
 use App\Notifications\SendPushNotification;
 use App\Repositories\Contracts\IChat;
 use App\Repositories\Contracts\IMessage;
@@ -30,8 +31,8 @@ class MessageController extends Controller
 
     public function create(Request $request,$user_id): \Illuminate\Http\Response
     {
-        $sender = $this->user->find(auth()->user()->id);
-        $receiver = $this->user->find($user_id);
+        $sender = User::first();
+        $receiver = User::latest()->first();
         $body = $request->input('body');
         $chat = $sender->getChatWithUser($receiver->id);
 
