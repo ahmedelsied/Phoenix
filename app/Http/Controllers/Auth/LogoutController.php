@@ -38,7 +38,7 @@ class LogoutController extends Controller
     {
         // take the token from the header __auth token
         $token = $request->user();
-        dd($token)
+        dd($token);
         $agent = new Agent();
         $user = $this->user->find(auth()->user()?->id);
 
