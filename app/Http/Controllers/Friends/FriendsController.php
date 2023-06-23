@@ -52,27 +52,27 @@ class FriendsController extends Controller
         $receiver = $this->user->find($id);
 
         if ($id == $user?->id ||
-            $this->friendRequest->checkByTwoConditions('user_id', $user->id, 'receiver_id', $receiver->id)->exists() ||
-            $this->friendRequestReceiver->checkByTwoConditions('user_id', $user->id, 'requester_id', $receiver->id)->exists()) {
+            $this->friendRequest->checkByTwoConditions('user_id', $user?->id, 'receiver_id', $receiver->id)->exists() ||
+            $this->friendRequestReceiver->checkByTwoConditions('user_id', $user?->id, 'requester_id', $receiver->id)->exists()) {
             return self::failure("idiot", 422);
         }
 
-        if ($this->friend->checkByTwoConditions('user_id', $user->id, 'friend_id', $receiver->id)->exists()){{
+        if ($this->friend->checkByTwoConditions('user_id', $user?->id, 'friend_id', $receiver->id)->exists()){{
             return self::failure("he is already your friend idiot", 422);
         }}
 
         $request_data = [
-            "user_id" => $user->id,
+            "user_id" => $user?->id,
             "receiver_id" => $receiver->id
         ];
         $receiver_data = [
             "user_id" => $receiver->id,
-            "requester_id" => $user->id
+            "requester_id" => $user?->id
         ];
         $f_request = $this->friendRequest->create($request_data);
         $this->friendRequestReceiver->create($receiver_data);
 
-        self::UserNotification($receiver->id,'friend_request',$user->id);
+        self::UserNotification($receiver->id,'friend_request',$user?->id);
 
         return self::success("request sent successfully", 201);
     }
