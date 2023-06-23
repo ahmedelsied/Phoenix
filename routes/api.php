@@ -42,7 +42,7 @@ Route::post('/verify/{user}', [VerificationController::class, 'verify'])->name('
 Route::post('/resend/{from}', [VerificationController::class, 'resend']);
 
 // admin route group
-Route::group(['middleware' => ['auth.guard:admin', 'protected']], function() {
+// Route::group(['middleware' => ['auth.guard:admin', 'protected']], function() {
     ////////////////////////////////// users ////////////////////////////
     Route::get('/allUsers',[AUserController::class,'getAllUsers']);
     Route::get('/getFriendsRequest/{UserId}',[AUserController::class,'getFriendsRequest']);
@@ -89,10 +89,10 @@ Route::group(['middleware' => ['auth.guard:admin', 'protected']], function() {
     Route::get('/countOfAll',[AdminController::class,'countOfAll']);
     Route::post('/logout', [LogoutController::class, 'logout']);
 
-});
+// });
 
 /// user route group
-Route::group(['middleware' => ['auth.guard:user', 'protected']], function() {
+// Route::group(['middleware' => ['auth.guard:user', 'protected']], function() {
     ///////////////////////////////////// friends ////////////////////////////////////////
     Route::post('/friend/add/{id}', [FriendsController::class, 'addFriend']);
     Route::post('/friend/accept/{id}', [FriendsController::class, 'acceptFriendRequest']);
@@ -195,7 +195,7 @@ Route::group(['middleware' => ['auth.guard:user', 'protected']], function() {
     Route::get('/chat/unreadMessages/{chat_id}',[MessageController::class , 'unreadMessages']);
     Route::delete('/chat/deleteMessage/{message_id}',[MessageController::class,'deleteMessage']);
     Route::get('/chat/allChats',[ChatController::class,'allChats']);
-});
+// });
 
 
 
