@@ -72,7 +72,7 @@ class FriendsController extends Controller
         $f_request = $this->friendRequest->create($request_data);
         $this->friendRequestReceiver->create($receiver_data);
 
-        self::UserNotification($receiver->id,'friend_request',$user?->id);
+        // self::UserNotification($receiver->id,'friend_request',$user?->id);
 
         return self::success("request sent successfully", 201);
     }
