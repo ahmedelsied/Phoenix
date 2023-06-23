@@ -47,7 +47,7 @@ class MessageController extends Controller
             ->withbody($message->body)
             ->withAdditionalData([
                 'message_id'=>$message->id,
-                'is_visitor'=>$message->user_id!=auth()->user()->id,
+                'is_visitor'=>$message->user_id!=$sender->id,
                 'body'=>$message->body,
                 'user_id'=>$message->user_id,
                 'user_picture'=>$sender->picture,
