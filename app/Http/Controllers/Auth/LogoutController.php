@@ -37,10 +37,11 @@ class LogoutController extends Controller
     public function logout(Request $request): \Illuminate\Http\Response
     {
         // take the token from the header __auth token
-        $token = $request->bearerToken();
+        $token = $request->user();
+        dd($token)
         $agent = new Agent();
         $user = $this->user->find(auth()->user()?->id);
-        dd($user);
+
         // return error if token fails
         if (!$token) {
             return self::failure('something went wrong', 422);
