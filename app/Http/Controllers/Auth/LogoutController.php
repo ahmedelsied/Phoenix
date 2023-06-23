@@ -40,7 +40,7 @@ class LogoutController extends Controller
         $token = $request->bearerToken();
         $agent = new Agent();
         $user = $this->user->find(auth()->user()?->id);
-
+        dd($user);
         // return error if token fails
         if (!$token) {
             return self::failure('something went wrong', 422);
