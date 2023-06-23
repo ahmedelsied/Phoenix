@@ -39,6 +39,7 @@ class LogoutController extends Controller
         // take the token from the header __auth token
         $token = $request->bearerToken();
         $agent = new Agent();
+        dd(auth()->user(),$token);
         $user = $this->user->find(auth()->user()->id);
 
         // return error if token fails
