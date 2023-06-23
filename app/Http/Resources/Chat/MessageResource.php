@@ -20,7 +20,7 @@ class MessageResource extends JsonResource
         $user = User::first();
         return [
             'message_id'=>$this->id,
-            'is_visitor'=>$this->user_id!=auth()->user()->id,
+            'is_visitor'=>$this->user_id!=$user->id,
             'body'=>$this->body,
             'user_id'=>$this->user_id,
             'user_picture'=>$user->picture,
