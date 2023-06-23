@@ -8,7 +8,6 @@ class Search extends Filter
 {
     protected function applyFilter($builder)
     {
-        dd($this->filterName());
         $searchTerm = request($this->filterName());
         return $builder->where('name', 'like', "%{$searchTerm}%");
     }
