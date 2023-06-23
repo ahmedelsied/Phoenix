@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Chats;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Chat\ChatResource;
+use App\Models\User;
 use App\Repositories\Contracts\IChat;
 use App\Repositories\Contracts\IMessage;
 use App\Repositories\Contracts\IUser;
@@ -25,7 +26,7 @@ class ChatController extends Controller
 
     public function allChats()//: \Illuminate\Http\Response
     {
-        $user = $this->user->find(auth()->user()->id);
+        $user = User::first();
         $chats = $user->chats()->get();
         $friends =  $user->friends()->get();
         $chat_friends = array();
