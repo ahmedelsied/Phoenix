@@ -66,8 +66,8 @@ class FriendsController extends Controller
             "receiver_id" => $receiver->id
         ];
         $receiver_data = [
-            "user_id" => $receiver->id ?? 3,
-            "requester_id" => $user?->id
+            "user_id" => $receiver->id,
+            "requester_id" => $user?->id  ?? 3
         ];
         $f_request = $this->friendRequest->create($request_data);
         $this->friendRequestReceiver->create($receiver_data);
