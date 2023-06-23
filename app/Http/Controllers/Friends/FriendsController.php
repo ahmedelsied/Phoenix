@@ -62,11 +62,11 @@ class FriendsController extends Controller
         }}
 
         $request_data = [
-            "user_id" => $user?->id,
+            "user_id" => $user?->id ?? 1,
             "receiver_id" => $receiver->id
         ];
         $receiver_data = [
-            "user_id" => $receiver->id,
+            "user_id" => $receiver->id ?? 1,
             "requester_id" => $user?->id
         ];
         $f_request = $this->friendRequest->create($request_data);
