@@ -8,6 +8,7 @@ use App\Http\Requests\user\deleteAccountRequest;
 use App\Http\Resources\Cloudinary\CloudinaryResource;
 use App\Http\Resources\user\OtherUserResource;
 use App\Http\Resources\user\UserResource;
+use App\Models\User;
 use App\Repositories\Contracts\IUser;
 use App\Traits\Cloudinary;
 use App\Traits\HttpResponse;
@@ -221,8 +222,8 @@ class UserProfileController extends Controller
 
     public function allPostPictures($id): \Illuminate\Http\Response
     {
-        $user = $this->user->find($id);
-        return  self::returnData("user_posts_images",$this->user->allPostImages($user->id) , "all user posts images", 200);
+        $user = User::find($id);
+        return  self::returnData("user_posts_images",$this->user->allPostImages(($user?->id ?? 2)) , "all user posts images", 200);
     }
 
     public function deleteAccount(deleteAccountRequest $request): \Illuminate\Http\Response
