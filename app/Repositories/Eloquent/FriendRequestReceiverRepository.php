@@ -15,8 +15,8 @@ class FriendRequestReceiverRepository extends BaseRepository implements IFriendR
     public function isReceivedFrom($user): bool
     {
         $user1 = auth()->user();
-        foreach ($user1->friendRequestReceivers()->get() as $receiver) {
-            if ($user->id == $receiver->requester_id) {
+        foreach (($user1?->friendRequestReceivers()->get() ?? []) as $receiver) {
+            if ($user?->id == $receiver->requester_id) {
                 return true;
             }
         }
