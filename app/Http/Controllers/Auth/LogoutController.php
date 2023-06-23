@@ -37,8 +37,7 @@ class LogoutController extends Controller
     public function logout(Request $request): \Illuminate\Http\Response
     {
         // take the token from the header __auth token
-        $token = $request->user();
-        dd($token);
+        $token = $request->bearerToken();
         $agent = new Agent();
         $user = $this->user->find(auth()->user()?->id);
 
