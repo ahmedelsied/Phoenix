@@ -18,7 +18,7 @@ class SearchResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'picture' => $this->picture,
-            'isMe' => auth()->user()-> id === $this->id,
+            'isMe' => auth()->user()?-> id === $this->id,
             'isFriend' => $friend->isFriend($this),
             'isSentToHim' => $requested->isRequested($this),
             'isSendToMe' => $receiver->isReceivedFrom($this),
